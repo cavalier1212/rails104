@@ -31,7 +31,7 @@
   <tbody>
     <% @posts.each do |post| %>
     <tr>
-      <td><%= post.content %></td>
+      <td><%= link_to(post.content, edit_group_post_path(post.group, post)) %></td>
       <td><%= post.user.email %></td>
       <td><%= post.created_at%></td>
     </tr>
