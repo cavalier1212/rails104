@@ -1,16 +1,16 @@
 class GroupsController < ApplicationController
   before_action :authenticate_user! ,only: [:new, :create, :edit, :update, :destroy]
-  before_action :find_group_and_checkout_permission, only: [:edut, :update, :destroy]
+  before_action :find_group_and_checkout_permission, only: [:edit, :update, :destroy]
   def index
     @groups = Group.all
   end
 
   def show
     @group = Group.find(params[:id])
+    @posts = @group.posts
   end
 
   def edit
-
   end
 
   def new
@@ -32,8 +32,6 @@ class GroupsController < ApplicationController
 
 
     def update
-
-
       if @group.update(group_params)
         redirect_to groups_path, notice: "Update Success"
       else
